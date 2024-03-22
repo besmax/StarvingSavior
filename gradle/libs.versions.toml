@@ -31,7 +31,7 @@ hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.re
 
 #Ktor
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-android = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 
