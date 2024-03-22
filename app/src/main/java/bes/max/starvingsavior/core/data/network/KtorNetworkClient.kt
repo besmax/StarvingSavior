@@ -45,7 +45,7 @@ class KtorNetworkClient(
     }
 
     companion object {
-        private const val GEOAPIFY_API_KEY = "21a51f7b886348b2851ed0a246dbf089"
+        private const val GEOAPIFY_API_KEY = "21a51f7b886348b2851ed0a246dbf089" //todo hide key
         private const val BASE_URL = "https://api.geoapify.com/v2"
         private const val RESTAURANT_URL = "$BASE_URL/places/"
         const val CODE_NO_INTERNET = -1

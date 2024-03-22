@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.ksp)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -35,6 +37,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,14 +53,17 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.hilt)
-    implementation(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.ktor.core)
     implementation(libs.ktor.android)
     implementation(libs.ktor.serialization)
     implementation(libs.ktor.logging)
+
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.logback)
+
+    implementation(libs.yandex.map.lite)
 
     testImplementation(libs.junit)
 
