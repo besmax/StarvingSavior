@@ -4,12 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RestaurantDto(
-    @SerialName("type") var type: String? = null,
-    val features: List<Feature>,
-)
-
-@Serializable
 data class Feature (
     val type: String,
     val properties: Properties,
