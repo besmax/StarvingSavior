@@ -15,4 +15,5 @@ fun Feature.map(): RestaurantModel = RestaurantModel(
     phone = properties?.contact?.phone,
     street = properties?.street,
     housenumber = properties?.housenumber,
+    site = properties?.website
 )

@@ -7,4 +7,5 @@
     <string name="restaurant_phone">Тел.: %1$s</string>
     <string name="restaurant_opening_hours">График: %1$s</string>
     <string name="choose_restaurant">Выберите ресторан на карте</string>
+    <string name="tel">tel:%1$s</string>
 </resources>

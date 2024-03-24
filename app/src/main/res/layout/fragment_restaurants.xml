@@ -101,9 +101,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/blue"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
             android:textSize="16sp"
-            tools:text="+7 777 706-77-77" />
+            tools:text="+7 777 706-77-77"
+             />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

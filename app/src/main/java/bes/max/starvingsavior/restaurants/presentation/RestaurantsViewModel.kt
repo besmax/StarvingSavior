@@ -3,6 +3,7 @@ package bes.max.starvingsavior.restaurants.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import bes.max.starvingsavior.core.domain.navigation.ExternalNavigator
 import bes.max.starvingsavior.core.util.ErrorType
 import bes.max.starvingsavior.core.util.Resource
 import bes.max.starvingsavior.restaurants.domain.repositories.RestaurantRepository
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RestaurantsViewModel @Inject constructor(
-    private val repository: RestaurantRepository
+    private val repository: RestaurantRepository,
+    private val externalNavigator: ExternalNavigator,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<RestaurantsScreenState>(RestaurantsScreenState.Loading)
@@ -23,6 +25,14 @@ class RestaurantsViewModel @Inject constructor(
 
     init {
         getRestaurants()
+    }
+
+    fun makePhoneCall(phoneNumber: String) {
+        externalNavigator.makePhoneCall(phoneNumber)
+    }
+
+    fun openSite(link: String) {
+        externalNavigator.openUrlLink(link)
     }
 
     private fun getRestaurants() {

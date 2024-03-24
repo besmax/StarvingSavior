@@ -8,4 +8,5 @@ data class RestaurantModel(
     val phone: String?,
     val street: String?,
     val housenumber: String?,
+    val site: String?,
 )
