@@ -35,9 +35,14 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
 
     private val fillBottomSheet: (RestaurantModel) -> Unit = { model ->
         binding.bottomSheetName.text = model.name
-        binding.bottomSheetAddress.text =
-            getString(R.string.restaurant_address, model.street, model.housenumber)
-        binding.bottomSheetHours.text = model.openingHours
+        binding.bottomSheetAddress.text = getString(
+            R.string.restaurant_address,
+            model.street,
+            model.housenumber
+        )
+        binding.bottomSheetHours.text =
+            getString(R.string.restaurant_opening_hours, model.openingHours)
+        binding.bottomSheetPhone.text = getString(R.string.restaurant_phone, model.phone)
     }
 
     override fun createBinding(
