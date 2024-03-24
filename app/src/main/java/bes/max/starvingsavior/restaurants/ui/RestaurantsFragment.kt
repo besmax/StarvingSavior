@@ -30,6 +30,8 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
 
     private var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>? = null
 
+    private val placemarkTapListeners = ArrayList<MapObjectTapListener>()
+
     private val fillBottomSheet: (RestaurantModel) -> Unit = { model ->
         binding.bottomSheetName.text = model.name
         binding.bottomSheetAddress.text =
@@ -87,10 +89,10 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
 
         binding.map.mapWindow.map.move(
             CameraPosition(
-                Point(
-                    state.restaurants[0].lat,
-                    state.restaurants[0].lon
-                ), 14.5f, 150.0f, 30.0f
+                Point(state.restaurants[0].lat, state.restaurants[0].lon),
+                14.5f,
+                150.0f,
+                30.0f
             )
         )
         val imageProvider = ImageProvider.fromResource(requireContext(), R.drawable.ic_loc_pin)
@@ -142,9 +144,13 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
             }
         }
 
-    private fun getPlacemarkTapListener(model: RestaurantModel): MapObjectTapListener = MapObjectTapListener { _, point ->
-        fillBottomSheet(model)
-        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-        true
+    private fun getPlacemarkTapListener(model: RestaurantModel): MapObjectTapListener {
+        val listener = MapObjectTapListener { _, point ->
+            fillBottomSheet(model)
+            bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            true
+        }
+        placemarkTapListeners.add(listener)
+        return listener
     }
 }
