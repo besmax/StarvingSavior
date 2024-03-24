@@ -30,7 +30,7 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
 
     private var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>? = null
 
-    // MapKit хранит слабые ссылки на передаваемые ему Listener-объекты
+    // MapKit keeps weak references to Listeners-object passed to it
     private val placemarkTapListeners = ArrayList<MapObjectTapListener>()
 
     private val fillBottomSheet: (RestaurantModel) -> Unit = { model ->
@@ -138,8 +138,7 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
                 }
             }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
         }
 
     private fun getPlacemarkTapListener(model: RestaurantModel): MapObjectTapListener {
