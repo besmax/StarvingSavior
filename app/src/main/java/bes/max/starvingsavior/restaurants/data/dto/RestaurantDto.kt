@@ -60,6 +60,8 @@ data class Properties(
     val wikiAndMedia: WikiAndMedia? = null,
     @SerialName("place_id")
     val placeID: String? = null,
+    @SerialName("name_other")
+    val nameOther: NameOther? = null,
 )
 
 @Serializable
@@ -67,6 +69,12 @@ data class Catering(
     val cuisine: String? = null,
     val capacity: Long? = null,
     val reservation: String? = null,
+    val diet: Diet? = null,
+)
+
+@Serializable
+data class Diet(
+    val vegetarian: Boolean? = null,
 )
 
 @Serializable
@@ -176,7 +184,15 @@ data class Raw(
     val contactWebsite: String? = null,
     @SerialName("contact:instagram")
     val contactInst: String? = null,
-)
+    val microbrewery: String? = null,
+    @SerialName("alt_name")
+    val altName: String? = null,
+    @SerialName("check_date:opening_hours")
+    val checkDateOpeningHours: String? = null,
+    @SerialName("diet:vegetarian")
+    val dietVegetarian: String? = null,
+
+    )
 
 @Serializable
 data class WikiAndMedia(
@@ -195,6 +211,14 @@ data class Facilities(
     val outdoorSeating: Boolean? = null,
     val takeaway: Boolean? = null,
     val delivery: Boolean? = null,
+    @SerialName("wheelchair_details")
+    val wheelchairDetails: WheelchairDetails? = null,
+
+    )
+
+@Serializable
+data class WheelchairDetails(
+    val condition: String? = null,
 )
 
 @Serializable
@@ -221,7 +245,14 @@ data class PaymentOptions(
     @SerialName("credit_cards")
     val paymentCreditCards: Boolean? = null,
 )
+
 @Serializable
 data class BrandDetails(
     val wikidata: String? = null,
+)
+
+@Serializable
+data class NameOther(
+    @SerialName("alt_name")
+    val altName: String? = null,
 )
