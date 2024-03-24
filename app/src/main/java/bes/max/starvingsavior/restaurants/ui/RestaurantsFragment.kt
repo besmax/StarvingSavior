@@ -1,6 +1,8 @@
 package bes.max.starvingsavior.restaurants.ui
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +47,9 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
             getString(R.string.restaurant_opening_hours, model.openingHours)
 
         if (model.phone != null) {
-            binding.bottomSheetPhone.text = getString(R.string.restaurant_phone, model.phone)
+            val mSpannableString = SpannableString(getString(R.string.restaurant_phone, model.phone))
+            mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
+            binding.bottomSheetPhone.text = mSpannableString
             binding.bottomSheetPhone.setOnClickListener {
                 viewModel.makePhoneCall(model.phone)
             }
@@ -61,6 +65,9 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
                     R.color.blue
                 )
             )
+            val mSpannableString = SpannableString(model.name)
+            mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
+            binding.bottomSheetName.text = mSpannableString
             binding.bottomSheetName.isFocusable = true
             binding.bottomSheetName.isClickable = true
         }
