@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RestaurantsResponse(
-    @SerialName("type") var type: String? = null,
-    val features: List<Feature>,
+    @SerialName("type") val type: String,
+    @SerialName("features") val features: List<Feature>,
 ) : Response()

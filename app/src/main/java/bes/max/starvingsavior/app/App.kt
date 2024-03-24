@@ -11,5 +11,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        MapKitFactory.setApiKey(bes.max.starvingsavior.BuildConfig.MAPKIT_API_KEY)
     }
 }

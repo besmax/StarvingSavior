@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">StarvingSavior</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_no_internet">Ошибка: отсутствует подключение к интернету</string>
+    <string name="error_server">Ошибка сервера, попробуйте позже</string>
+    <string name="error_no_content">По вашему запросу нет данных</string>
+    <string name="restaurant_address">%1$s, %2$s</string>
 </resources>

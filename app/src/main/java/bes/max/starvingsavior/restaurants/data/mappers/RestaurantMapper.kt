@@ -8,11 +8,11 @@ fun RestaurantsResponse.mapToList(): List<RestaurantModel> =
     features.map { it.map() }
 
 fun Feature.map(): RestaurantModel = RestaurantModel(
-    name = properties.name,
-    lon = properties.lon,
-    lat = properties.lat,
-    openingHours = properties.openingHours,
-    phone = properties.contact.phone,
-    street = properties.street,
-    housenumber = properties.housenumber,
+    name = properties?.name,
+    lon = properties?.lon ?: 0.0,
+    lat = properties?.lat ?: 0.0,
+    openingHours = properties?.openingHours,
+    phone = properties?.contact?.phone,
+    street = properties?.street,
+    housenumber = properties?.housenumber,
 )
