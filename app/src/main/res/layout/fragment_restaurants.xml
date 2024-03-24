@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".restaurants.ui.RestaurantsFragment">
-    
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="21sp"
+        android:text="@string/choose_restaurant"
+        app:layout_anchorGravity="top"/>
+
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="8dp"
+        app:layout_anchorGravity="bottom"
+        app:layout_anchor="@id/title"/>
 
     <View
         android:id="@+id/overlay"
@@ -29,22 +38,22 @@
         android:id="@+id/error_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp" />
 
     <ProgressBar
         android:id="@+id/map_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@drawable/bottomsheet_background"
+        android:orientation="vertical"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
@@ -52,18 +61,19 @@
         <View
             android:layout_width="60dp"
             android:layout_height="2dp"
-            android:layout_margin="8dp"
             android:layout_gravity="center"
-            android:background="@color/gray"/>
+            android:layout_margin="8dp"
+            android:background="@color/gray" />
+
         <TextView
             android:id="@+id/bottom_sheet_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:gravity="center"
-            tools:text="Name"
             android:textColor="@color/black"
-            android:textSize="19sp"/>
+            android:textSize="19sp"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/bottom_sheet_address"
@@ -71,9 +81,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:gravity="center"
-            tools:text="Name"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/bottom_sheet_hours"
@@ -81,9 +91,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:gravity="center"
-            tools:text="10:00-23:00"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            tools:text="10:00-23:00" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

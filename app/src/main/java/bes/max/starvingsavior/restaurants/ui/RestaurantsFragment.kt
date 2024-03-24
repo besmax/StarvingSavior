@@ -30,12 +30,13 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
 
     private var bottomSheetBehavior: BottomSheetBehavior<LinearLayout>? = null
 
+    // MapKit хранит слабые ссылки на передаваемые ему Listener-объекты
     private val placemarkTapListeners = ArrayList<MapObjectTapListener>()
 
     private val fillBottomSheet: (RestaurantModel) -> Unit = { model ->
         binding.bottomSheetName.text = model.name
         binding.bottomSheetAddress.text =
-            getString(R.string.restaurant_address, model?.street, model.housenumber)
+            getString(R.string.restaurant_address, model.street, model.housenumber)
         binding.bottomSheetHours.text = model.openingHours
     }
 
@@ -85,16 +86,11 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
     private fun showContent(state: RestaurantsScreenState.Content) {
         binding.mapProgressBar.visibility = View.GONE
         binding.map.visibility = View.VISIBLE
+        binding.title.visibility = View.VISIBLE
         binding.errorMessage.visibility = View.GONE
 
-        binding.map.mapWindow.map.move(
-            CameraPosition(
-                Point(state.restaurants[0].lat, state.restaurants[0].lon),
-                14.5f,
-                150.0f,
-                30.0f
-            )
-        )
+        moveMapToPosition(Point(state.restaurants[0].lat, state.restaurants[0].lon))
+
         val imageProvider = ImageProvider.fromResource(requireContext(), R.drawable.ic_loc_pin)
         state.restaurants.forEach { model ->
             val placemark = binding.map.mapWindow.map.mapObjects.addPlacemark().apply {
@@ -108,12 +104,14 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
     private fun showLoading() {
         binding.mapProgressBar.visibility = View.VISIBLE
         binding.map.visibility = View.GONE
+        binding.title.visibility = View.GONE
         binding.errorMessage.visibility = View.GONE
     }
 
     private fun showError(state: RestaurantsScreenState.Error) {
         binding.mapProgressBar.visibility = View.GONE
         binding.map.visibility = View.GONE
+        binding.title.visibility = View.GONE
         binding.errorMessage.visibility = View.VISIBLE
         binding.errorMessage.text = getString(
             when (state.errorType) {
@@ -152,5 +150,16 @@ class RestaurantsFragment : BindingFragment<FragmentRestaurantsBinding>() {
         }
         placemarkTapListeners.add(listener)
         return listener
+    }
+
+    private fun moveMapToPosition(point: Point) {
+        binding.map.mapWindow.map.move(
+            CameraPosition(
+                point,
+                14.5f,
+                150.0f,
+                30.0f
+            )
+        )
     }
 }
