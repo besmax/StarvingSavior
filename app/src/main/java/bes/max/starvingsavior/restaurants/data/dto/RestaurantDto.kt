@@ -191,8 +191,7 @@ data class Raw(
     val checkDateOpeningHours: String? = null,
     @SerialName("diet:vegetarian")
     val dietVegetarian: String? = null,
-
-    )
+)
 
 @Serializable
 data class WikiAndMedia(
@@ -213,8 +212,7 @@ data class Facilities(
     val delivery: Boolean? = null,
     @SerialName("wheelchair_details")
     val wheelchairDetails: WheelchairDetails? = null,
-
-    )
+)
 
 @Serializable
 data class WheelchairDetails(

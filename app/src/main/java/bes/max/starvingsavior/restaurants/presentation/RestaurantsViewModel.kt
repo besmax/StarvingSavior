@@ -1,6 +1,5 @@
 package bes.max.starvingsavior.restaurants.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import bes.max.starvingsavior.core.domain.navigation.ExternalNavigator
@@ -45,7 +44,6 @@ class RestaurantsViewModel @Inject constructor(
                             _uiState.value = RestaurantsScreenState.Content(
                                 response.data
                             )
-                            Log.d("RestaurantsViewModel", "size of list= ${response.data.size}")
                         } else {
                             _uiState.value = RestaurantsScreenState.Error(ErrorType.NO_CONTENT)
                         }
